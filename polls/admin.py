@@ -3,6 +3,11 @@ from guardian.admin import GuardedModelAdmin
 
 from .models import Question, Choice
 
+admin.site.site_header = '华东投票管理'
+admin.site.site_title = '投票管理'
+admin.site.index_title="名字"
+
+
 class ChoiceInline(admin.TabularInline):
     model = Choice
 
@@ -19,6 +24,14 @@ class ChoiceAdmin(GuardedModelAdmin):
     list_display = ['choice_text', 'votes']
     # 设置每页的记录数， 默认100条
     list_per_page = 10
+    # 排序
+    ordering = ['-votes']
+    # 默认可编辑字段
+    list_editable = ['votes']
+    # 可进行过滤的字段
+    list_filter = ['votes']
+    # 搜索
+    search_fields = ['choice_text']
 
 
 
