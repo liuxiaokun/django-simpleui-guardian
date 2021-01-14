@@ -49,7 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'mysite.mymiddleware.MD1'
+    'mysite.mymiddleware.MD1',
+    'mysite.mymiddleware.MD2'
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -126,8 +127,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # 这是Django默认的
-    'guardian.backends.ObjectPermissionBackend', # 这是guardian的
+    'django.contrib.auth.backends.ModelBackend',  # 这是Django默认的
+    'guardian.backends.ObjectPermissionBackend',  # 这是guardian的
 )
