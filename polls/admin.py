@@ -1,7 +1,9 @@
 from django.contrib import admin
 from guardian.admin import GuardedModelAdmin
+from import_export.admin import ImportExportModelAdmin
 
 from .models import Question, Choice
+from .resources import QuestionResource
 
 admin.site.site_header = '华东投票管理'
 admin.site.site_title = '投票管理'
@@ -11,15 +13,16 @@ admin.site.index_title="名字"
 class ChoiceInline(admin.TabularInline):
     model = Choice
 
-class QuestionAdmin(GuardedModelAdmin):
+class QuestionAdmin(ImportExportModelAdmin, GuardedModelAdmin):
     # 可为1对多条件的进行一次性添加
     inlines = [ChoiceInline]
     # 设置列表显示
     list_display = ['question_text', 'pub_date']
     # 设置每页的记录数， 默认100条
     list_per_page = 10
+    resource_class = QuestionResource
 
-class ChoiceAdmin(GuardedModelAdmin):
+class ChoiceAdmin(ImportExportModelAdmin, GuardedModelAdmin):
     # 设置列表显示
     list_display = ['choice_text', 'votes']
     # 设置每页的记录数， 默认100条
