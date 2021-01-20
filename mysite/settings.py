@@ -174,3 +174,38 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 设置前缀
 MEDIA_URL = '/media/'
 
+SIMPLEUI_CONFIG = {
+    # 在自定义菜单的基础上保留系统模块
+    'system_keep': True,
+    'menus': [
+        {
+            'name': '单层菜单',
+            'icon': 'fas fa-code',
+            'url': 'test.html'
+        },
+        {
+            'app': 'auth',
+            'name': '权限认证test',
+            'icon': 'fas fa-user-shield',
+            'models':
+                [{
+                    'name': '用户',
+                    'icon': 'fa fa-user',
+                    'url': 'auth/user/'
+                }]
+        },
+        {
+            'name': '测试test',
+            'icon': 'fa fa-file',
+            'models': [{
+                'name': 'Baidu',
+                'url': 'https://www.baidu.com',
+                'icon': 'far fa-surprise'
+            },
+            {
+                'name': '内网穿透',
+                'url': 'https://www.wezoz.com',
+                'icon': 'fab fa-github'
+            }]
+    }]
+}
